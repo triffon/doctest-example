@@ -27,7 +27,7 @@ public:
     return m_Seconds;
   }
 
-  unsigned long SetValue(unsigned long seconds)
+  void SetValue(unsigned long seconds)
   {
     m_Seconds = seconds;
   }
@@ -58,7 +58,8 @@ std::istream& operator>> (std::istream& is, Timestamp& ts)
   return is;
 }
 
-#include "UnitTestFramework.h"
+#define DOCTEST_CONFIG_IMPLEMENT
+#include "doctest.h"
 
 //-------------------------------------------------------------------------
 //
@@ -74,10 +75,10 @@ int main()
   //-------------------------------------------------------------------------
   //
   // ВАЖНО: При предаване на работата във тялото на функцията main не трябва да се
-  //        изпълнява нищо друго освен функцията RunTests().
+  //        изпълнява нищо друго освен долния ред
   //
   //-------------------------------------------------------------------------
-  RunTests();
+  doctest::Context().run();
 
   return 0;
 }
